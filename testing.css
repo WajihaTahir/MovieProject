@@ -101,6 +101,13 @@ header, h1{
     overflow-y: scroll;
     z-index: 10;
 }
+
+
+
+.search-list-item{
+    background-color: var(--md-dark-color);
+}
+
 .search-list .search-list-item{
     background-color: var(--light-dark-color);
     padding: 0.5rem;

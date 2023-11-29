@@ -2,9 +2,6 @@ const movieSearchBox = document.getElementById("movie-search-box");
 const searchList = document.getElementById("search-list");
 const resultGrid = document.getElementById("result-grid");
 
-// let image1=document.getElementById("image1");
-// console.log("test", image1);
-
 // load movies from API
 async function loadMovies(searchTerm) {
     const URL = `https://omdbapi.com/?s=${searchTerm}&apikey=434bb60d`;
@@ -49,29 +46,6 @@ const yearofmovie=document.createElement("p")
 nameofmovie.innerText=movies[idx].Title;
 yearofmovie.innerText=movies[idx].Year;
 information.append(nameofmovie,yearofmovie)
-
-    //   movieListItem.innerHTML = `
-    //   <div class = "search-item-thumbnail">
-    //       <img src = "${moviePoster}">
-    //   </div>
-    //   <div class = "search-item-info">
-    //       <h3>${movies[idx].Title}</h3>
-    //       <p>${movies[idx].Year}</p>
-    //   </div>
-    //   `;
-
-
-//  let image1=document.getElementById("image1");
-//  console.log(image1);
-//  image1.src =movies[idx].Poster;
-//  let h31=document.getElementById('h31');
-//  h31.innerText=movies[idx].Title;
-//  let p1=document.getElementById("p1");
-// p1.innerText=movies[idx].Year;
-
-// movieListItem.append(image1,h31,p1)
-// movieListItem.innerHTML=image1+h31+p1;
-
 console.log(movieListItem);
   searchList.appendChild(movieListItem);
 }
@@ -123,11 +97,11 @@ function loadMovieDetails() {
       `;
   }
   
-  window.addEventListener("click", (event) => {
-    if (event.target.className != "form-control") {
-      searchList.classList.add("hide-search-list");
-    }
-  });
+//   window.addEventListener("click", (event) => {
+//     if (event.target.className != "form-control") {
+//       searchList.classList.add("hide-search-list");
+//     }
+//   });
 
 
 

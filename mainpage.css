@@ -1,6 +1,6 @@
-*{
-    color: var(--light-dark-color);
-    box-sizing: border-box;
+
+i{
+    color: white;
 }
 
 body{
@@ -15,6 +15,7 @@ font-family: 'Roboto, sans-serif;'
 
 a{
     text-decoration: none;
+    color:white;
 }
 
 
@@ -91,11 +92,20 @@ a{
 
 h2{
     text-align: center;
-    color: white;
+    color:white;
     font-size: 36px;
     font-family:'Roboto', sans-serif;
     margin-top: 100px;
     margin-left: 0;
+}
+.btn{
+    background-color:rgba(0,0,0,0.4) ;
+    color:white;
+    float:right;
+    font-family: 'Roboto', sans-serif;
+    font-size: 16px;
+
+
 }
 
 .textscontainer{
@@ -105,7 +115,7 @@ flex-wrap: wrap;
 flex-direction: row;
 justify-content: center;
 align-items: center;
-margin-left: 0;
+margin-left: 10px;
 opacity: 0.7;
 margin-top:100px;
 border-radius: 50%;

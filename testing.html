@@ -1,20 +1,75 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JavaScript ☕</title>
+  <link rel="stylesheet" href="./testing.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Gamja+Flower&family=Jura:wght@300&family=Raleway:wght@100&family=Roboto:wght@300&display=swap" rel="stylesheet">
     <link href="./testing.css" rel="stylesheet" type="text/css" />
-    <title>Test Page for search</title>
+    <link
+      rel="stylesheet"
+      href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css"
+    />
 </head>
-<script src="./testing.js"></script>
 <body>
-        <h1>WhatToWatch?</h1>
-        <h3>Search the movie you like</h3>
-        <input type="text" id="searchField" placeholder="Search for any movie...">      
+    <div class = "wrapper">
+        <!-- logo -->
+        <header>
+            <h1>WhatToWatch?</h1>
+          </header>
+  <!-- <div class="container"> -->
+    <!-- <form>
+      <label for="input">Type the name of the movie/series:</label>
+      <input id="input" />
+      <button type="submit">Get it!!</button>
+    </form> -->
+
+    <div class = "search-container">
+        <div class = "search-element">
+            <h3>Search Movie:</h3>
+            <input type = "text" class = "form-control" placeholder="Search Movie Title ..." id = "movie-search-box" onkeyup="findMovies()" onclick = "findMovies()">   
+            <div class = "search-list" id = "search-list">
+<!-- <div class = "search-list-item">
+          <div class = "search-item-thumbnail" id="search-item-thumbnail">
+            <img id="image1">
+            </div>
+                        <div id="searchiteminfo" class = "search-item-info">
+                            <h3 id="h31"></h3>
+                            <p id="p1"></p>
+                        </div>
+                    </div>       -->
+                </div>
+                </div>
+                </div>
+      <div class = "container">
+        <div class = "result-container">
+            <div class = "result-grid" id = "result-grid">
+                <div class = "movie-poster" id="movie-poster">
+                    <img/>
+                </div>
+                <div class = "movie-info" id="movie-info">
+                    <h3></h3>
+                    <ul>
+                        <li id="year"></li>
+                        <li id="rated"></li>
+                        <li id="released"></li>
+                    </ul>
+                    <p class = "genre" id="genre"></p>
+                    <p class = "writer" id="writer"></p>
+                    <p class = "actors" id="actors"></p>
+                    <p class = "plot" id="plot"></p>
+                    <p class = "language" id="language"></p>
+                    <p class = "awards" id="awards"></p>
+                </div>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="./testing.js"></script>
 </body>
 </html>
