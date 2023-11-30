@@ -1,18 +1,46 @@
 const movieSearchBox = document.getElementById("movie-search-box");
 const searchList = document.getElementById("search-list");
 const resultGrid = document.getElementById("result-grid");
+const checkboxes = document.getElementById("checkboxes");
+
+// function createListeners(watcharray)
+// {
+//   const movieselect=document.getElementById("movie-check")
+//   movieselect.addEventListener("onclick", (event)=> {
+//     if(Search.Type==="movie")
+//   displayMovieList(watcharray) })
+//   else
+//   {
+//   const filteredbymovies=watcharray.filter((g) => {
+//     return g.nameofmovie===Search.Title;
+//   })
+//   displayMovieList(filteredbymovies);
+// }
+// }
+// const seriesselect=document.getElementById("series-check")
+// seriesselect.addEventListener("onclick", (event) =>{
+// if (Search.Type==="series")
+// displayMovieList(Search.Type)})
+// else
+// {
+//   const filteredbymovies2=watcharray.filter((g) =>
+//   {
+//     return g.nameofmovie===Search.Title;
+//   })
+//   displayMovieList(filteredbymovies2);
+// }
 
 // load movies from API
 async function loadMovies(searchTerm) {
-  const URL = `https://omdbapi.com/?s=${searchTerm}&apikey=434bb60d`;
+  const URL = `https://omdbapi.com/?s=${searchTerm}&apikey=434bb60d`; //calling end points and receiving data in the variable.
   const res = await fetch(`${URL}`);
-  const data = await res.json();
+  const data = await res.json(); //the result is being converted to json
   console.log(data.Search);
   if (data.Response == "True") displayMovieList(data.Search);
 }
 
 function findMovies() {
-  let searchTerm = movieSearchBox.value.trim();
+  let searchTerm = movieSearchBox.value;
   if (searchTerm.length > 0) {
     searchList.classList.remove("hide-search-list");
     loadMovies(searchTerm);
@@ -21,8 +49,37 @@ function findMovies() {
   }
 }
 
-function displayMovieList(movies) {
+function displayMovieList(movieData) {
   searchList.innerHTML = "";
+  const checkElements = checkboxes.querySelectorAll(".type-checkbox");  //added all checboxes to the checkelements which is an object.
+  const checks = []; //created this checks to convert all object elements to array.
+  checkElements.forEach((item)=>{      //pushed all those elements to form an array of checkboxes.
+   checks.push(item);
+  })
+  let movies = [];
+  const allChecked = checks.filter((check) => {
+    if(check.checked) {
+      return true;
+    }
+    else {
+      return false;
+    }
+  });
+  const showAll = allChecked.length === 0;
+
+  if (showAll) {
+    movies = movieData;
+  } else {
+    movies = movieData.filter((item) => {
+      for (let i = 0; i < checks.length; i++) {
+        if (checks[i].checked && item.Type === checks[i].value) {
+          return true;
+        }
+      }
+      return false;
+    });
+  }
+
   for (let idx = 0; idx < movies.length; idx++) {
     let movieListItem = document.createElement("div");
     movieListItem.dataset.id = movies[idx].imdbID; // setting movie id in  data-id
@@ -33,9 +90,9 @@ function displayMovieList(movies) {
     thumbnail1.classList.add("search-item-thumbnail");
     const image = document.createElement("img");
     image.setAttribute("src", moviePoster);
-    thumbnail1.append(image);
+    thumbnail1.append(image); //appended image with the thumbnail.
     const information = document.createElement("div");
-    information.classList.add("search-item-info");
+    information.classList.add("search-item-info"); //added div with search-item-info class to the movieListItem class list
     movieListItem.append(thumbnail1, information);
     const nameofmovie = document.createElement("h3");
     const yearofmovie = document.createElement("p");
