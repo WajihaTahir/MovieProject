@@ -1,8 +1,8 @@
 /* declaring global root variable and its properties can be used anywhere in the file. */
 
 :root {
-  --md-dark-color: #472e66;
-  --dark-color: #8a3177;
+  --md-dark-color: #2e2f66;
+  --dark-color: #0f6b8a;
   --light-dark-color: #746464;
   --yellow-color: #d4aa11;
 }
@@ -13,7 +13,18 @@ h1 {
   padding: 0;
   margin-bottom: 0;
   color: whitesmoke;
-  background-color: black;
+  background-image:url(../black-370118_1280.png);
+  opacity: 0.9;
+}
+
+.ion-ios-videocam-outline{
+  color:yellow;
+ display:flex;
+ justify-content: center;
+}
+
+i{
+  font-size: 25px;
 }
 
 h1 {
@@ -30,8 +41,8 @@ body {
   font-family: "Inter", sans-serif;
   padding: 0;
   margin: 0;
-background-color: white
 }
+
 
 .search-container {
   background-color: var(--md-dark-color);

@@ -2,41 +2,36 @@ const movieSearchBox = document.getElementById("movie-search-box");
 const searchList = document.getElementById("search-list");
 const resultGrid = document.getElementById("result-grid");
 const checkboxes = document.getElementById("checkboxes");
+let allmovies=[];
 
-// function createListeners(watcharray)
-// {
-//   const movieselect=document.getElementById("movie-check")
-//   movieselect.addEventListener("onclick", (event)=> {
-//     if(Search.Type==="movie")
-//   displayMovieList(watcharray) })
-//   else
-//   {
-//   const filteredbymovies=watcharray.filter((g) => {
-//     return g.nameofmovie===Search.Title;
-//   })
-//   displayMovieList(filteredbymovies);
-// }
-// }
-// const seriesselect=document.getElementById("series-check")
-// seriesselect.addEventListener("onclick", (event) =>{
-// if (Search.Type==="series")
-// displayMovieList(Search.Type)})
-// else
-// {
-//   const filteredbymovies2=watcharray.filter((g) =>
-//   {
-//     return g.nameofmovie===Search.Title;
-//   })
-//   displayMovieList(filteredbymovies2);
-// }
+
+function createListeners()
+{
+  movieSearchBox.addEventListener("keyup", findMovies)
+  const checkElements = checkboxes.querySelectorAll(".type-checkbox");  //added all checboxes to the checkelements which is an object.
+  console.log(checkElements)
+  checkElements.forEach(item => {
+    item.addEventListener("change", ()=> {
+      displayMovieList(allmovies);
+    })
+  })
+
+}
+createListeners();
+
+
 
 // load movies from API
 async function loadMovies(searchTerm) {
   const URL = `https://omdbapi.com/?s=${searchTerm}&apikey=434bb60d`; //calling end points and receiving data in the variable.
   const res = await fetch(`${URL}`);
   const data = await res.json(); //the result is being converted to json
-  console.log(data.Search);
-  if (data.Response == "True") displayMovieList(data.Search);
+  if (data.Response == "True"){ 
+    displayMovieList(data.Search);  
+    allmovies=data.Search;
+  }
+  else
+  allmovies=[];
 }
 
 function findMovies() {
@@ -50,36 +45,31 @@ function findMovies() {
 }
 
 function displayMovieList(movieData) {
-  searchList.innerHTML = "";
+  searchList.innerHTML = "";  //emptying the searchList each time
   const checkElements = checkboxes.querySelectorAll(".type-checkbox");  //added all checboxes to the checkelements which is an object.
-  const checks = []; //created this checks to convert all object elements to array.
-  checkElements.forEach((item)=>{      //pushed all those elements to form an array of checkboxes.
-   checks.push(item);
+  
+  let checked = "all"; //created this checks to convert all check elements and be stored in an array.
+  checkElements.forEach((item)=>{      //pushed all those elements to form an array of checkboxes using anon function.
+    // checks.push(item);
+    if(item.checked)
+    {
+    checked=item.value;
+    }
   })
-  let movies = [];
-  const allChecked = checks.filter((check) => {
-    if(check.checked) {
-      return true;
-    }
-    else {
-      return false;
-    }
-  });
-  const showAll = allChecked.length === 0;
-
-  if (showAll) {
-    movies = movieData;
-  } else {
-    movies = movieData.filter((item) => {
-      for (let i = 0; i < checks.length; i++) {
-        if (checks[i].checked && item.Type === checks[i].value) {
-          return true;
-        }
-      }
-      return false;
-    });
+  let movies = [];  
+  console.log(checked); //now we want another array which will check the checking of those checkboxes, this is the array which we will be using ahead in our list. 
+  if (checked==="all"){
+    
+  movies=movieData;
   }
-
+  else
+  {
+    
+    movies=movieData.filter((item)=>{
+    return item.Type===checked;
+    })
+  }
+  
   for (let idx = 0; idx < movies.length; idx++) {
     let movieListItem = document.createElement("div");
     movieListItem.dataset.id = movies[idx].imdbID; // setting movie id in  data-id
@@ -99,7 +89,7 @@ function displayMovieList(movieData) {
     nameofmovie.innerText = movies[idx].Title;
     yearofmovie.innerText = movies[idx].Year;
     information.append(nameofmovie, yearofmovie);
-    console.log(movieListItem);
+    // console.log(movieListItem);
     searchList.appendChild(movieListItem);
   }
   loadMovieDetails();

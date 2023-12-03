@@ -38,12 +38,16 @@ function myFunction() {
   function mouseover() {
     div.style.width = "500px";
     div.style.height="500px";
+    div.style.marginLeft="480px";
+    div.style.marginBottom='50px';
    
   }
   
   function mouseout() {
     div.style.width = "400px";
     div.style.height="400px";
+    div.style.marginLeft="530px";
+    div.style.marginBottom='50px';
   }
   
   
