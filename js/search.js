@@ -5,6 +5,7 @@ const checkboxes = document.getElementById("checkboxes");
 let allmovies=[];
 
 
+
 function createListeners()
 {
   movieSearchBox.addEventListener("keyup", findMovies)
@@ -48,7 +49,7 @@ function displayMovieList(movieData) {
   searchList.innerHTML = "";  //emptying the searchList each time
   const checkElements = checkboxes.querySelectorAll(".type-checkbox");  //added all checboxes to the checkelements which is an object.
   
-  let checked = "all"; //created this checks to convert all check elements and be stored in an array.
+  let checked = "all"; 
   checkElements.forEach((item)=>{      //pushed all those elements to form an array of checkboxes using anon function.
     // checks.push(item);
     if(item.checked)
@@ -114,10 +115,18 @@ function loadMovieDetails() {
 
 function displayMovieDetails(details) {
   resultGrid.innerHTML = `
+  <div class="flip-card">
+  <div class="flip-card-inner">
     <div class = "movie-poster">
         <img src = "${
           details.Poster != "N/A" ? details.Poster : "image_not_found.png"
         }" alt = "movie poster">
+    </div>
+    <div class="flip-card-back">
+    <h4>${details.Title}</h4>
+    <h5>${details.Year}</h5>
+    </div>
+    </div>
     </div>
     <div class = "movie-info">
         <h3 class = "movie-title">${details.Title}</h3>
@@ -126,20 +135,16 @@ function displayMovieDetails(details) {
             <li class = "rated">Ratings: ${details.Rated}</li>
             <li class = "released"><b>Released: </b>${details.Released}</li>
         </ul>
-        <p class = "genre"><b>Genre: </b> ${details.Genre}</p>
-        <p class = "writer"><b>Writer: </b> ${details.Writer}</p>
-        <p class = "actors"><b>Actors: </b>${details.Actors}</p>
-        <p class = "plot"><b>Plot: </b> ${details.Plot}</p>
-        <p class = "language"><b>Language: </b> ${details.Language}</p>
-        <p class = "awards"><b>Awards: <i class = "fas fa-award"></i></b> ${
+        <p class = "genre"><b>Genre: &nbsp;</b> ${details.Genre}</p>
+        <p class = "writer"><b>Writer: &nbsp;</b> ${details.Writer}</p>
+        <p class = "actors"><b>Actors: &nbsp;</b>${details.Actors}</p>
+        <p class = "plot"><b>Plot: &nbsp;</b> ${details.Plot}</p>
+        <p class = "language"><b>Language: &nbsp;</b> ${details.Language}</p>
+        <p class = "awards"><b>Awards: &nbsp;<i class = "fas fa-award"></i></b> ${
           details.Awards
         }</p>
     </div>
     `;
-}
+};
 
-// window.addEventListener("click", (event) => {
-//   if (event.target.className != "form-control") {
-//     searchList.classList.add("hide-search-list");
-//   }
-// });
+

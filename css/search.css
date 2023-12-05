@@ -1,10 +1,10 @@
 /* declaring global root variable and its properties can be used anywhere in the file. */
 
 :root {
-  --md-dark-color: #2e2f66;
-  --dark-color: #0f6b8a;
+  --md-dark-color: #694774;
+  --dark-color: #a10f51;
   --light-dark-color: #746464;
-  --yellow-color: #d4aa11;
+  --yellow-color: #d9ad0e;
 }
 
 header,
@@ -13,8 +13,8 @@ h1 {
   padding: 0;
   margin-bottom: 0;
   color: whitesmoke;
-  background-image:url(../black-370118_1280.png);
-  opacity: 0.9;
+  background-color: #000000;
+
 }
 
 .ion-ios-videocam-outline{
@@ -41,11 +41,12 @@ body {
   font-family: "Inter", sans-serif;
   padding: 0;
   margin: 0;
+  background-color: #000000;
 }
 
 
 .search-container {
-  background-color: var(--md-dark-color);
+  background-color: #1d1b1b;
   height: 150px;
   display: flex;
   align-items: center;
@@ -85,6 +86,7 @@ body {
   max-height: 500px;
   overflow-y: scroll;
   border-radius: 20px;
+  z-index: 2;
 }
 
 .search-list .search-list-item {
@@ -147,16 +149,63 @@ p {
 
 /* movie result */
 .result-container {
-  padding: 150px 150px 150px 150px;
+  background-color: #000000;
+  margin-bottom: none;
 }
 .movie-poster img {
   max-width: 300px;
-  margin: 0 auto;
-  border: 6px solid #000000;
+  margin-left:50px;
+  margin-top:0px;
+  border: 6px solid #fffefe;
+  z-index: -1;
+
+}
+.flip-card {
+  background-color: transparent;
+  width: 300px;
+  height: 300px;
+  perspective: 1000px;
+  margin-left:150px;
+  margin-top: 40px;
+
+
+  
+}
+
+.flip-card-inner {
+  position: relative;
+  width: 300px;
+  height: 400px;
+  text-align: center;
+  transition: transform 0.9s;
+  transform-style:preserve-3d;
+
+  
+}
+
+.flip-card:hover .flip-card-inner {
+  transform: rotateY(180deg);
+  
+}
+
+.movie-poster, .flip-card-back {
+  position: absolute;   
+  width: 300px;
+  height: 400px;
+  backface-visibility: hidden;
+  
+      /*these properties are used to keep the backside hidden until hovered */
+} 
+
+
+.flip-card-back {
+  background-color: var(--yellow-color);
+  color: white;
+  transform: rotateY(180deg);
 }
 .movie-info {
   text-align: center;
-  color: black;
+  color: rgb(255, 255, 255);
   padding-top: 3rem;
 }
 
@@ -204,7 +253,7 @@ p {
   border-radius: 3px;
 }
 .movie-info .plot {
-  max-width: 400px;
+  max-width: 500px;
   margin: 1rem auto;
   font-size: 18px;
   text-align: justify;
@@ -255,6 +304,7 @@ p {
 .result-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
+  background-color: #000000;
 }
 .movie-info {
   text-align: left;
@@ -271,3 +321,6 @@ p {
   padding-left: 0;
   margin-left: 0;
 }
+
+
+

@@ -52,18 +52,4 @@ function myFunction() {
   
   
   
-  //fetching data
-  function fetchdata()
-  {
-      const exampleID = "tt13623136"
-      const exampleSearch = "friends"
-      fetch("https://www.omdbapi.com/?s=" + exampleSearch + "&apikey=434bb60d")
-      .then(res=>{
-          return res.json();
-      })
-      .then(data=>{
-          console.log(data);
-      })
-      .catch(error=>console.log("error"));
-  }
-  fetchdata();
+  
