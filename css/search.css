@@ -1,7 +1,6 @@
 /* declaring global root variable and its properties can be used anywhere in the file. */
 
 :root {
-  --md-dark-color: #694774;
   --dark-color: #a10f51;
   --light-dark-color: #746464;
   --yellow-color: #d9ad0e;
@@ -71,7 +70,7 @@ body {
   font-weight: 300;
 }
 
-.search-element .form-control {
+.search-element .form-control {  
   padding: 16px 32px;
   font-size: 20px;
   color: var(--light-dark-color);
@@ -312,4 +311,13 @@ p {
 .movie-info .writer {
   padding-left: 0;
   margin-left: 0;
+}
+
+
+.reset-button{
+  background-color: transparent;
+  color:white;
+  margin-left:5px;
+  margin-bottom: 8px;
+
 }

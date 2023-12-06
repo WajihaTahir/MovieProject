@@ -6,8 +6,7 @@ let allmovies = []; //to be used for checkboxes
 
 function createListeners() {
   movieSearchBox.addEventListener("keyup", findMovies);  //allows the specific function to be added when keyup (or something else) happens.
-  const checkElements = checkboxes.querySelectorAll(".type-checkbox"); //added all checboxes to the checkelements which is an object.
-  console.log("lalalala",checkElements);
+  const checkElements = checkboxes.querySelectorAll(".type-checkbox"); //returning or added all checboxes to the checkelements which is an object.
   checkElements.forEach((item) => {
     item.addEventListener("change", () => {
       displayMovieList(allmovies);
@@ -20,7 +19,7 @@ createListeners();
 
 function findMovies() {
   let searchTerm = movieSearchBox.value;
-  console.log("this is searchterm", searchTerm);
+  console.log("this is searchterm", searchTerm);     //searchTerm
   if (searchTerm.length > 0) {
     searchList.classList.remove("hide-search-list");
     loadMovies(searchTerm);   //our actual fetch function
@@ -33,7 +32,7 @@ function findMovies() {
 // load movies from API by live fetch which will run in parallel to other functions because it is async
 async function loadMovies(searchTerm) {   //searchTerm is coming from the findMovies function. 
   try{
-  const URL = `https://omdbapi.com/?s=${searchTerm}&apikey=434bb60d`; //calling end points and receiving data in the variable.
+  const URL = `https://omdbapi.com/?s=${searchTerm}&apikey=${apiKey}`; //calling end points and receiving data in the variable.
   const res = await fetch(`${URL}`);
   const data = await res.json(); //the result is being converted to json
   if (data.Response == "True") {
@@ -89,7 +88,7 @@ function displayMovieList(movieData) {
     const image = document.createElement("img");
     image.setAttribute("src", moviePoster);
     thumbnail1.append(image); //appended image with the thumbnail.
-    const information = document.createElement("div");
+    const information = document.createElement("div"); 
     information.classList.add("search-item-info"); //added div with search-item-info class to the movieListItem class list
     movieListItem.append(thumbnail1, information);
     const nameofmovie = document.createElement("h3");
@@ -108,13 +107,13 @@ function displayMovieList(movieData) {
 
 function loadMovieDetails() {
   const searchListMovies = searchList.querySelectorAll(".search-list-item");
-  searchListMovies.forEach((movie) => {
+  searchListMovies.forEach((movie) => {   //can be anything in place of movie.
     movie.addEventListener("click", async () => {
       // console.log(movie.dataset.id);
       searchList.classList.add("hide-search-list");
       movieSearchBox.value = "";
       const result = await fetch(
-        `http://www.omdbapi.com/?i=${movie.dataset.id}&apikey=434bb60d`
+        `http://www.omdbapi.com/?i=${movie.dataset.id}&apikey=${apiKey}`
       );
       const movieDetails = await result.json();
       // console.log(movieDetails);
@@ -127,9 +126,9 @@ function loadMovieDetails() {
 
 
 
-function displayMovieDetails(details) {
+function displayMovieDetails(details) {   
   resultGrid.innerHTML = `
-  <div class="flip-card">
+  <div class="flip-card"> 
   <div class="flip-card-inner">
     <div class = "movie-poster">
         <img src = "${
@@ -159,4 +158,8 @@ function displayMovieDetails(details) {
         }</p>
     </div>
     `;
+}
+
+function cleardata(){
+  resultGrid.innerHTML="";
 }

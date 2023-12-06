@@ -6,7 +6,7 @@ function myFunction() {
   // to be displayed is already set to
   // 'none' (that is hidden) then this
   // section of code triggers
-  if (dots.style.display === "none") {
+  if (dots.style.display === "none") {  //means that if its value is true. 
     moreText.style.display = "none"; // Hide the text between the span elements
     dots.style.display = "inline"; // Show the dots after the text
     btnText.innerHTML = "Read More"; // Change the text on button to 'Read More'
