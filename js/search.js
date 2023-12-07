@@ -113,7 +113,7 @@ function loadMovieDetails() {
       searchList.classList.add("hide-search-list");
       movieSearchBox.value = "";
       const result = await fetch(
-        `http://www.omdbapi.com/?i=${movie.dataset.id}&apikey=${apiKey}`
+        `https://www.omdbapi.com/?i=${movie.dataset.id}&apikey=${apiKey}`
       );
       const movieDetails = await result.json();
       // console.log(movieDetails);
