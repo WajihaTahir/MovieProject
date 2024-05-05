@@ -11,7 +11,7 @@ The project also offers the user to use filters through radio buttons so that th
 
 <img width="1438" alt="Screenshot 2024-05-05 at 1 31 31 PM" src="https://github.com/WajihaTahir/MovieProject/assets/144616811/74c53b6b-afe8-42ef-bde3-1eaad40a2a46">
 
-<h2>Technologies used:</h2>
+<h2>Technologies Used:</h2>
 
 ![JavaScript](https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E)
 ![HTML5](https://img.shields.io/badge/html5-%23E34F26.svg?style=for-the-badge&logo=html5&logoColor=white)
